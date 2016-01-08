@@ -4,12 +4,28 @@ var routes = require('./routes');
 var errorHandlers = require('./middleware/errorHandlers');
 var log = require('./middleware/log');
 var partials = require('express-partials');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var bodyParser = require('body-parser');
+// var RedisStore = require('connect-redis')(session);
 
 app.set('view engine', 'ejs');
 app.set('view options', { defaultLayout: 'layout' });
 app.use(partials());
 app.use(log.logger);
 app.use(express.static(__dirname + '/static'));
+app.use(cookieParser('secret'));
+app.use(session({
+	saveUninitialized: true,
+	resave: true,
+	// store: new RedisStore({
+	// 	url: 'redis://localhost'
+	// }),
+	secret: 'secret'
+}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 app.get('/', routes.index);
 app.get('/login', routes.login);
