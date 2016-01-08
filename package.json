@@ -1,0 +1,21 @@
+{
+  "name": "scalable-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "connect-flash": "0.1.1",
+    "connect-redis": "1.4.7",
+    "cookie-parser": "^1.4.0",
+    "ejs": "0.8.5",
+    "express": "4.6.1",
+    "express-partials": "0.2.0",
+    "redis": "0.10.1"
+  },
+  "author": "Stas Slesarev",
+  "license": "ISC"
+}
