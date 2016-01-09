@@ -2,7 +2,7 @@ function index (req, res) {
 	res.render('index', { title: 'Index' });
 }
 function login (req, res) {
-	res.render('login', { title: 'Login' });
+	res.render('login', { title: 'Login', token: res.locals.csrf });
 }
 
 function loginProcess(req, res) {

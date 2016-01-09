@@ -8,6 +8,8 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 // var RedisStore = require('connect-redis')(session);
+var csrf = require('csurf');
+var utils = require('./middleware/utilities');
 
 app.set('view engine', 'ejs');
 app.set('view options', { defaultLayout: 'layout' });
@@ -25,7 +27,8 @@ app.use(session({
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(csrf());
+app.use(utils.csrf);
 
 app.get('/', routes.index);
 app.get('/login', routes.login);
